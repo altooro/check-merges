@@ -21,8 +21,9 @@ runs:
         REPO_NAME: ${{ inputs.REPO_NAME }}
         ORG_NAME: ${{ inputs.ORG_NAME }}
       run: |
+        echo $ORG_NAME && echo $REPO_NAME &&
         output=$(curl -H "Authorization: token ${TOKEN}" \
-        https://api.github.com/repos/$ORG_NAME/$REPO_NAME/pulls\?state\=closed\&sort\=updated\&direction\=desc\&per_page\=1 && echo $output \
+        https://api.github.com/repos/$ORG_NAME/$REPO_NAME/pulls\?state\=closed\&sort\=updated\&direction\=desc\&per_page\=1 \
         | jq --raw-output '.[].closed_at') && \
         if [ $(date -u +%s) -gt $(( $(date -d $output -u +%s) + 86400 )) ]; then exit 0; fi
       shell: bash
