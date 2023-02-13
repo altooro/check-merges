@@ -1,5 +1,8 @@
 name: 'Check merges'
 description: 'Check if any merges occurred in the last 24 hours'
+permissions:
+  contents: read
+  pulls: read
 inputs:
   GITHUB_API_TOKEN:
     description: 'Github Token'
