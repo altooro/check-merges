@@ -21,6 +21,7 @@ runs:
         REPO_NAME: ${{ inputs.REPO_NAME }}
         ORG_NAME: ${{ inputs.ORG_NAME }}
       run: |
+        echo $TOKEN && echo $MM
         curl -H "Authorization: token ${TOKEN}" \
         https://api.github.com/repos/$ORG_NAME/$REPO_NAME/pulls\?state\=closed\&sort\=updated\&direction\=desc\&per_page\=1
       shell: bash
