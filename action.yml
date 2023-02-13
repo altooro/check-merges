@@ -22,5 +22,5 @@ runs:
         ORG_NAME: ${{ inputs.ORG_NAME }}
       run: |
         curl -H "Authorization: token ${TOKEN}" \
-        https://api.github.com/repos/$ORG_NAME/$REPO_NAME/pulls\?state\=closed\&sort\=updated\&direction\=desc\&per_page\=1
+        https://api.github.com/repos/altooro/$REPO_NAME/pulls\?state\=closed\&sort\=updated\&direction\=desc\&per_page\=1
       shell: bash
