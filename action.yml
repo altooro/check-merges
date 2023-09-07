@@ -11,13 +11,10 @@ inputs:
     description: 'Organization name'
     required: true
 
-outputs:
-  merged:
-    description: 'Indicates if there were merge events in the last 24 hours'
-    value: ${{ steps.check_merges.outputs.merged }}
-
 runs:
   using: "composite"
+  outputs:
+    merged: ${{ steps.check_merges.outputs.merged }}
   steps:
     - name: Check if there were any merge events in the last 24 hours
       id: check_merges
